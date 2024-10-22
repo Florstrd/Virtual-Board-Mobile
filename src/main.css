@@ -1,0 +1,22 @@
+.note
+{
+    width: 250px;
+    height: 200px;
+    background-color: yellowgreen;
+    color: white;
+    position: absolute;
+}
+
+#board
+{
+    height: 600px;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+#boards-div {
+    display: none
+}
