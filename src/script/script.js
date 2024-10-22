@@ -16,6 +16,10 @@ async function logIn(user, password) {
                 getBoards();
                 document.getElementById("login-div").style.display = "none";
                 document.getElementById("boards-div").style.display = "block";
+                document.getElementById("login-fail").style.display = "none";
+                document.getElementById("login-success").style.display = "block";
+            } else {
+                document.getElementById("login-fail").style.display = "block";
             }
             
 }
@@ -38,6 +42,10 @@ async function saveNote(noteId, note, style) {
         });
         const respData = await response.json();
         console.log(respData);
+        if (respData.msg === "Note edited!") {
+            document.getElementById("note-saved").style.display = "block";
+            setTimeout(closePopup, 2000);
+        }
     } catch (error) {
         const response = await fetch("https://virtual-board-v1-dennis.azurewebsites.net/notes", {
             method: "POST",
@@ -51,6 +59,10 @@ async function saveNote(noteId, note, style) {
         });
         const respData = await response.json();
         console.log(respData);
+        if (respData.msg === "Note edited!") {
+            document.getElementById("note-saved").style.display = "block";
+            setTimeout(closePopup, 2000);
+        }
     }
     
 }
@@ -197,6 +209,7 @@ document.querySelector('#btn-login').addEventListener('click', () => {
 
 // Change board from menu
 document.querySelector("#boards-menu").addEventListener("click", (e) => {
+    document.getElementById("login-success").style.display = "none";
     console.log(e.target.classList);
     let boardId = e.target.id;
     let boardName = e.target.name;
@@ -269,6 +282,9 @@ async function createNewNote() {
     getNotes(boardId);
   }
 
+async function closePopup() {
+    document.getElementById("note-saved").style.display = "none";
+}
 
   interact('.draggable')
   .draggable({

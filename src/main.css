@@ -12,11 +12,18 @@
     height: 600px;
 }
 
-.dropdown-menu-right {
+.dropdown-menu-right 
+{
     right: 0;
     left: auto;
 }
 
-#boards-div {
+#boards-div 
+{
     display: none
+}
+
+.alert
+{
+    display: none;
 }
